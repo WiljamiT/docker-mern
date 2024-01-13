@@ -50,14 +50,12 @@ app.delete("/api/movies/:id", async (req, res) => {
   const movieId = req.params.id;
 
   try {
-    // Check if the movie exists
     const movie = await Movie.findById(movieId);
     if (!movie) {
       return res.status(404).json({ msg: "Movie not found" });
     }
 
-    // Remove the movie
-    await movie.deleteOne(); // or use await Movie.deleteOne({ _id: movieId });
+    await movie.deleteOne(); 
 
     res.json({ msg: "Movie deleted successfully" });
   } catch (error) {
@@ -70,17 +68,15 @@ app.put("/api/movies/:id", async (req, res) => {
   const movieId = req.params.id;
 
   try {
-    // Check if the movie exists
     const movie = await Movie.findById(movieId);
     if (!movie) {
       return res.status(404).json({ msg: "Movie not found" });
     }
 
-    // Update the movie with the new data from the request body
     const updatedMovie = await Movie.findOneAndUpdate(
       { _id: movieId },
       { $set: req.body },
-      { new: true } // This option returns the modified document instead of the original
+      { new: true }
     );
 
     res.json(updatedMovie);
@@ -92,7 +88,5 @@ app.put("/api/movies/:id", async (req, res) => {
 
 app.listen(8000, () => {
   console.log("server listening on port 8000");
-
-  // connect to the database
   connect();
 });

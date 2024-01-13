@@ -1,10 +1,83 @@
-/* .movie_list {
-    box-shadow: 1px 2px 5px black;
-    width: 800px;
-    margin: 0 auto;
-    padding: 1rem;
-    border-radius: 7px;
+body {
+    background: #f0f2f5;
+    margin: 0;
+    padding: 0;
+}
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+
+    background: #ffffff;
+    box-shadow: 0px 0px 3px gray;
 }
 
+.navbar a {
+    margin: 0 1rem;
+}
 
- */
+.container {
+    display: flex;
+    flex-direction: column;
+    margin: 0 10rem;
+    padding: 5rem;
+}
+
+.movie_list {
+    background: #ffffff;
+    border-radius: 7px;
+    box-shadow: 0px 0px 3px gray;
+    height: 500px;
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
+
+.movie_info {
+    box-shadow: 0px 0px 2px gray;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    margin: 1rem;
+    word-wrap: break-word;
+}
+
+.movie_info h4, p, a {
+    width: 25%;
+}
+
+.edit_container {
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    height: auto;
+    margin-top: 2rem;
+
+}
+
+.title {
+    padding: 5px;
+}
+
+.title input {
+    margin-left: 0.5rem;
+}
+
+.description {
+    padding: 5px;
+
+    display: flex;
+    flex-direction: column;
+    width: 200px;
+}
+
+.description textarea {
+    height: 100px;
+}
+.button-container {
+    padding: 5px;
+}
+
+.button-container button {
+    margin: 0.2rem;
+}

@@ -2,10 +2,17 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
+import { Pagination } from "@mui/material";
+
+import text from "../strings.json";
+
 function Home() {
   const [movies, setMovies] = useState([]);
   const [editMode, setEditMode] = useState(false);
   const [editedMovie, setEditedMovie] = useState({});
+
+  const [page, setPage] = useState(1);
+  const [totalPages, setTotalPages] = useState(1);
 
   useEffect(() => {
     const apiUrl = process.env.REACT_APP_API_URL;
@@ -15,6 +22,7 @@ function Home() {
       .then((res) => {
         console.log("Response data:", res.data);
         setMovies(res.data);
+        setTotalPages(Math.ceil(res.data.length / 5));
       })
       .catch((err) => {
         console.error("Error fetching movies:", err);
@@ -71,42 +79,58 @@ function Home() {
     }));
   };
 
+  const handlePageChange = (event, value) => {
+    setPage(value);
+  };
+
+  const getPaginatedMovies = () => {
+    const startIndex = (page - 1) * 5;
+    const endIndex = startIndex + 5;
+    return movies.slice(startIndex, endIndex);
+  };
+
   return (
     <main className="container">
-      <h1 className="heading">Explore</h1>
-      <p className="sub_heading">List of movies to watch</p>
-
+      
+        <h1 className="heading">{text.strings.header.nav}</h1>
+        <p className="sub_heading">{text.strings.header.main}</p>
+      
       <ul className="movie_list">
-        {movies.length > 0 ? (
-          movies.map((movie) => (
+        {getPaginatedMovies().map((movie) => (
             <li key={movie._id} className="movie_card" style={{marginLeft: "10px"}}>
               <div className="movie_info">
                 <h4>{movie.title}</h4>
                 <p>{movie.description}</p>
                 <div className="movie_link">
                   <Link to={movie.link} target="_blank" className="link">
-                    Watch
+                    {text.strings.card.watch}
                   </Link>
                   <Link onClick={() => handleDelete(movie._id)} className="link" style={{ color: "red", marginLeft: "1rem" }}>
-                    X
+                    {text.strings.card.delete}
                   </Link>
                   <button onClick={() => handleEdit(movie)} className="link" style={{ marginLeft: "1rem" }}>
-                    Edit
+                    {text.strings.button.edit}
                   </button>
                 </div>
               </div>
             </li>
-          ))
-        ) : (
-          <p className="no_result">Oops, No movies available</p>
-        )}
+          ))}
       </ul>
 
+      
+        <Pagination
+          count={totalPages}
+          page={page}
+          onChange={handlePageChange}
+          color="primary"
+          style={{ marginTop: "20px" }}
+        />
+      
       {editMode && (
-        <div>
+        <div className="edit_container">
           <h2>Edit Movie</h2>
           <form>
-            <div>
+            <div className="title">
               <label htmlFor="title">Title:</label>
               <input
                 type="text"
@@ -116,7 +140,7 @@ function Home() {
                 onChange={handleChange}
               />
             </div>
-            <div>
+            <div className="description">
               <label htmlFor="description">Description:</label>
               <textarea
                 id="description"
@@ -125,7 +149,7 @@ function Home() {
                 onChange={handleChange}
               />
             </div>
-            <div>
+            <div className="button-container">
               <button type="button" onClick={handleUpdate}>
                 Update
               </button>

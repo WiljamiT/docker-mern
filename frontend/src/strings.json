@@ -1,0 +1,20 @@
+{
+    "strings": {
+        "header": {
+            "nav": "Header for navigation",
+            "main": "Header for this section"
+        },
+        "text": {
+            "main": "Text for this section"  
+        },
+        "button": {
+            "home": "Home",
+            "share": "Share",
+            "edit": "Edit"
+        },
+        "card": {
+            "watch": "Watch",
+            "delete": "X"
+        }
+    }
+}
