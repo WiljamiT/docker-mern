@@ -25,23 +25,23 @@ function Create() {
     e.preventDefault();
 
     axios
-    .post(apiUrl, form)
-    .then((res) => {
-      console.log(res.data);
-      setForm({
-        title: "",
-        link: "",
-        description: "",
-      });
-      navigate("/");
-    })
-    .catch((err) => console.log(err));
-};
+      .post(apiUrl, form)
+      .then((res) => {
+        console.log(res.data);
+        setForm({
+          title: "",
+          link: "",
+          description: "",
+        });
+        navigate("/");
+      })
+      .catch((err) => console.log(err));
+  };
 
   return (
     <main className="container">
       <div className="form_area">
-      <h1 className="title">Share Movie</h1>
+        <h1 className="title">Share Movie</h1>
         <form onSubmit={handleSubmit} className="form">
           <div className="form_group">
             <label htmlFor="title" className="sub_title">
