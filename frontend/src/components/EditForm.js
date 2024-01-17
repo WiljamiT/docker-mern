@@ -12,7 +12,7 @@ const EditForm = ({ editedMovie, onUpdate, onCancel, onChange }) => {
             id="title"
             name="title"
             value={editedMovie.title || ""}
-            onChange={onChange} // Use the onChange prop
+            onChange={onChange}
           />
         </div>
         <div className="description">
@@ -21,14 +21,14 @@ const EditForm = ({ editedMovie, onUpdate, onCancel, onChange }) => {
             id="description"
             name="description"
             value={editedMovie.description || ""}
-            onChange={onChange} // Use the onChange prop
+            onChange={onChange}
           />
         </div>
         <div className="button-container">
-          <button type="button" onClick={onUpdate}> {/* Use the onUpdate prop */}
+          <button type="button" onClick={onUpdate}>
             Update
           </button>
-          <button type="button" onClick={onCancel}> {/* Use the onCancel prop */}
+          <button type="button" onClick={onCancel}>
             Cancel
           </button>
         </div>
