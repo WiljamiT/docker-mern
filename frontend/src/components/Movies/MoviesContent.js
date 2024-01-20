@@ -1,8 +1,9 @@
 import React from "react";
 import { Pagination } from "@mui/material";
-import text from "../strings.json";
+import text from "../../strings.json";
+import EditForm from "../EditForm";
+import "./MoviesContent.css";
 import MovieCard from "./MovieCard";
-import EditForm from "./EditForm";
 
 const MoviesContent = ({
   movies,
@@ -24,8 +25,8 @@ const MoviesContent = ({
   };
 
   return (
-    <main className="container">
-      <h1 className="heading">{text.strings.header.nav}</h1>
+    <main className="movies_container">
+      <h1 className="movies_heading">{text.strings.header.mongo}</h1>
       <p className="sub_heading">{text.strings.header.main}</p>
 
       <ul className="movie_list">

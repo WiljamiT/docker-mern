@@ -1,0 +1,12 @@
+.test_container {
+    border: 1px solid blue;
+    border-radius: 15px;
+    padding: 1rem;
+    margin: 1rem;
+    min-height: 700px;
+    width: 100%;
+}
+
+.test_heading {
+    color: blue;
+}

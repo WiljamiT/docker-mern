@@ -2,7 +2,9 @@
     "strings": {
         "header": {
             "nav": "Header for navigation",
-            "main": "Header for this section"
+            "mongo": "MongoDB",
+            "az":"Azure - Node",
+            "net": "Azure - .NET"
         },
         "text": {
             "main": "Text for this section"  

@@ -1,14 +1,13 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import text from "../strings.json";
-//import * as api from "../api";
+import text from "../../strings.json";
 
 const MovieCard = ({ movie, onDelete, onEdit }) => {
   const handleDelete = () => onDelete(movie._id);
   const handleEdit = () => onEdit(movie);
 
   return (
-    <li className="movie_card" style={{ marginLeft: "10px" }}>
+    <li className="movie_card">
       <div className="movie_info">
         <h4>{movie.title}</h4>
         <p>{movie.description}</p>

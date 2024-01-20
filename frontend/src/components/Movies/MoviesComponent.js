@@ -1,7 +1,9 @@
 import { useState, useEffect } from "react";
-import { useFetch } from "../hooks/useFetch";
-import * as api from "../api";
+import { useFetch } from "../../hooks/useFetch";
+import * as api from "../../api";
 import MoviesContent from "./MoviesContent";
+import CircularProgress from '@mui/material/CircularProgress';
+
 
 
 const MoviesComponent = () => {
@@ -34,7 +36,7 @@ const MoviesComponent = () => {
     setPage(value);
   };
 
-  if (loading) return <p>Loading...</p>;
+  if (loading) return <CircularProgress />;
   if (error) return <p>Error!</p>;
 
   return (
@@ -54,4 +56,4 @@ const MoviesComponent = () => {
   );
 }
 
-export default MoviesComponent
+export default MoviesComponent;
