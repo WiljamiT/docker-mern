@@ -1,12 +1,18 @@
 .movies_container {
     border: 1px solid green;
     border-radius: 15px;
-    padding: 1rem;
-    margin: 1rem;
-    min-height: 700px;
-    width: 100%;
+    padding: 0.5rem;
+    margin: 0.5rem;
+    min-height: 800px;
+    width: auto;
 }
 
 .movies_heading {
     color: green;
+}
+
+.movie_info {
+    box-shadow: 0px 2px 5px gray;
+    margin: 0.5rem 0;
+    padding: 0.5rem;
 }

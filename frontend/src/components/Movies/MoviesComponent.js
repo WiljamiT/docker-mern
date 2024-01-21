@@ -6,7 +6,9 @@ import CircularProgress from '@mui/material/CircularProgress';
 
 
 
-const MoviesComponent = () => {
+const MoviesComponent = (props) => {
+
+  const { isAuthenticated } = props;
 
   const apiUrl = process.env.REACT_APP_API_URL;
   const { loading, data: fetchedMovies, error } = useFetch(apiUrl);
@@ -52,6 +54,7 @@ const MoviesComponent = () => {
       handleCancelEdit={handleCancelEdit}
       handleChange={handleChange}
       handlePageChange={handlePageChange}
+      isAuthenticated={isAuthenticated}
     />
   );
 }

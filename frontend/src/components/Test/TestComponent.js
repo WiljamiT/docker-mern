@@ -25,8 +25,6 @@ const TestComponent = () => {
     if (loading) return <p><CircularProgress /></p>;
     if (error) return <p>Error!</p>;
 
-    console.log("ASDASDASDASDASD, ", testData)
-
     return (
         <TestContent
             testData={testData}
