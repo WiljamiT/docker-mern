@@ -8,6 +8,7 @@ colors.enable();
 
 const Movie = require("./database/movie.model");
 const connect = require("./database/connect");
+const path = require('path');
 
 const app = express();
 
@@ -84,6 +85,11 @@ app.put("/api/movies/:id", async (req, res) => {
     console.error(error.message);
     res.status(500).send("Server Error");
   }
+});
+
+app.use(express.static("./frontend/index.js"));
+app.get("*", (req, res) => {
+  res.sendFile(path.resolve(__dirname, "frontend", "build", "index.html"))
 });
 
 app.listen(8000, () => {
