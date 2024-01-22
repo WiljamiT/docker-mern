@@ -88,7 +88,7 @@ app.put("/api/movies/:id", async (req, res) => {
   }
 });
 
-app.use(express.statis("./frontend/build"));
+app.use(express.static("./frontend/build"));
 app.get("*", (req, res) => {
   res.sendFile(path.resolve(__dirname, "frontend", "build", "index.html"))
 })
