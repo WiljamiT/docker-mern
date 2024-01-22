@@ -11,6 +11,8 @@ const connect = require("./database/connect");
 
 const app = express();
 
+const path = require("path");
+
 app.use(
   cors({
     origin: "*",
@@ -55,7 +57,7 @@ app.delete("/api/movies/:id", async (req, res) => {
       return res.status(404).json({ msg: "Movie not found" });
     }
 
-    await movie.deleteOne(); 
+    await movie.deleteOne();
 
     res.json({ msg: "Movie deleted successfully" });
   } catch (error) {
@@ -85,6 +87,11 @@ app.put("/api/movies/:id", async (req, res) => {
     res.status(500).send("Server Error");
   }
 });
+
+app.use(express.statis("./frontend/build"));
+app.get("*", (req, res) => {
+  res.sendFile(path.resolve(__dirname, "frontend", "build", "index.html"))
+})
 
 app.listen(8000, () => {
   console.log("server listening on port 8000");
