@@ -7,4 +7,4 @@ with the Docker.
 
 use
 
-sudo snap refresh docker --channel=latest/edge
+<code>sudo snap refresh docker --channel=latest/edge</code>
